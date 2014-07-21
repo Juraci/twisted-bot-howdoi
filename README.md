@@ -1,4 +1,4 @@
-TalkBackBot
+Twisted-Bot howdoi
 ===========
 
 Experiment using twisted-python and howdoi to create an IRC bot that answers to programming general questions.
