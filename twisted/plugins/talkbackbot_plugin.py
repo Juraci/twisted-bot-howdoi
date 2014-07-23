@@ -19,13 +19,12 @@ class Options(usage.Options):
 class TalkBackBotService(Service):
     _bot = None
 
-    def __init__(self, endpoint, channel, nickname, realname, password, quotesFilename, triggers):
+    def __init__(self, endpoint, channel, nickname, realname, password, triggers):
         self._endpoint = endpoint
         self._channel = channel
         self._nickname = nickname
         self._realname = realname
         self._password = password
-        self._quotesFilename = quotesFilename
         self._triggers = triggers
 
     def startService(self):
@@ -82,7 +81,6 @@ class BotServiceMaker(object):
             nickname=config.get('irc', 'nickname'),
             realname=config.get('irc', 'realname'),
             password=config.get('irc', 'password'),
-            quotesFilename=config.get('talkback', 'quotesFilename'),
             triggers=triggers,
         )
 
