@@ -48,18 +48,17 @@ class TalkBackBot(irc.IRCClient):
         elif msg.startswith(self.nickname):
             # Reply back on the channel
             sendTo = channel
-            prefix = senderNick + ' the most relevant answer is:\n'
+            prefix = senderNick + '\n'
         else:
             msg = msg.lower()
             for trigger in self.factory.triggers:
                 if trigger in msg:
                     sendTo = channel
-                    prefix = senderNick + ' the most relevant answer is:\n'
+                    prefix = senderNick + '\n'
                     break
 
         if sendTo:
-            question = msg.replace("howdoi ", "")
-            answer = self.factory.adapter.ask(question)
+            answer = self.factory.adapter.ask(msg)
             self.msg(sendTo, prefix + answer)
             log.msg(
                 "sent message to {receiver}, triggered by {sender}:\n\t{answer}"
